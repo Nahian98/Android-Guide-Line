@@ -5,12 +5,14 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.google.gson.GsonBuilder
 import com.sayket.androidguideline.R
+import com.sayket.androidguideline.base.extention.ViewExtensions.loadImage
 import com.sayket.androidguideline.model.MyAddress
 import com.sayket.androidguideline.utils.CONS_ADDRESS
 import com.sayket.androidguideline.utils.CONS_ADDRESS_DATA
@@ -22,6 +24,7 @@ class MainActivity : AppCompatActivity() {
     private var textViewShow: TextView? = null
     private lateinit var btnNext: Button
     private lateinit var btnConstrain: Button
+    private lateinit var ivProfilePhoto: ImageView
     private var address: String = ""
     private var data: MyAddress? = null
 
@@ -52,7 +55,15 @@ class MainActivity : AppCompatActivity() {
         textViewShow = findViewById(R.id.tvShow)
         btnNext = findViewById(R.id.btnNext)
         btnConstrain = findViewById(R.id.btnConstrain)
+        ivProfilePhoto = findViewById(R.id.ivProfilePhoto)
         address = "Mirpur DHOS"
+
+        setImage()
+    }
+
+    private fun setImage() {
+        val imageUrl = "https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dGVjaG5vbG9neXxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+        ivProfilePhoto.loadImage(imageUrl,R.drawable.ic_user_avatar)
     }
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
