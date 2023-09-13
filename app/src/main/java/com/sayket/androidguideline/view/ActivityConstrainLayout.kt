@@ -12,7 +12,7 @@ import com.sayket.androidguideline.utils.CONS_ADDRESS
 import com.sayket.androidguideline.utils.CONS_ADDRESS_DATA
 
 
-class ActivitySecond : AppCompatActivity() {
+class ActivityConstrainLayout : AppCompatActivity() {
     private val TAG = "Activity_Second"
     private var address = ""
     private var addressAsData: MyAddress? = null

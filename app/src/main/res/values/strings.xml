@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">Android Guide Line</string>
-    <string name="go_to_next">Next</string>
+    <string name="send_email">Send Email</string>
+
+    <string name="font_bold" translatable="false">Bold</string>
+    <string name="font_semi_bold" translatable="false">SemiBold</string>
+    <string name="font_medium" translatable="false">Medium</string>
+    <string name="font_regular" translatable="false">Regular</string>
+    <string name="go_to_constrain">Go to Constrain</string>
+    <string name="this_is_linear_layout">This is Linear Layout!</string>
 </resources>

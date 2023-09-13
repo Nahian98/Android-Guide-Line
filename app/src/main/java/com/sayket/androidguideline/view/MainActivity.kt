@@ -12,19 +12,16 @@ import androidx.core.app.ActivityCompat
 import com.google.gson.GsonBuilder
 import com.sayket.androidguideline.R
 import com.sayket.androidguideline.model.MyAddress
-import com.sayket.androidguideline.services.RunningService
 import com.sayket.androidguideline.utils.CONS_ADDRESS
 import com.sayket.androidguideline.utils.CONS_ADDRESS_DATA
 
 
 class MainActivity : AppCompatActivity() {
-    private val REQUEST_CODE_SIGN_IN = 100
 
-    // val driveServiceHelper: DriveS
-    private val TAG = "lifeCyActivity_"
+    private val TAG = "main"
     private var textViewShow: TextView? = null
-    private lateinit var buttonStart: Button
-    private lateinit var buttonStop: Button
+    private lateinit var btnNext: Button
+    private lateinit var btnConstrain: Button
     private var address: String = ""
     private var data: MyAddress? = null
 
@@ -52,43 +49,18 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initComponent() {
-        textViewShow = findViewById<TextView>(R.id.tvShow)
-        buttonStart = findViewById<Button>(R.id.btnStart)
-        buttonStop = findViewById<Button>(R.id.btnStop)
+        textViewShow = findViewById(R.id.tvShow)
+        btnNext = findViewById(R.id.btnNext)
+        btnConstrain = findViewById(R.id.btnConstrain)
         address = "Mirpur DHOS"
     }
 
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     private fun initListener() {
-        findViewById<Button>(R.id.btnNext).setOnClickListener {
-            val dataStr = GsonBuilder().create().toJson(data).toString()
-            startActivity(Intent(this@MainActivity, ActivitySecond::class.java).apply {
-                putExtra(CONS_ADDRESS, address)
-                putExtra(CONS_ADDRESS_DATA, dataStr)
-            })
-
-        }
-
-
-
-        textViewShow?.setOnClickListener {
-//            Log.d(TAG,"onClick"+ "${GsonBuilder().create().toJson(data)}")
-//
-//            callBackClick?.invoke(address)
-//            startActivity(Intent(this@MainActivity, ActivitySecond::class.java).apply {
-//                putExtra(CONS_ADDRESS, "${GsonBuilder().create().toJson(data)}")
-//            })
-
-//            val email = Intent(Intent.ACTION_SEND)
-//            email.putExtra(Intent.EXTRA_EMAIL, "mrsaykatm4@gmail.com")
-//            email.putExtra(Intent.EXTRA_SUBJECT, "Hi")
-//            email.putExtra(Intent.EXTRA_TEXT, message)
-//
-//            startActivity(Intent.createChooser(email, "Choose an Email client:"))
-
+        btnNext.setOnClickListener {
             val email = Intent(Intent.ACTION_SEND).apply {
                 type = "text/plain"
-                putExtra(Intent.EXTRA_EMAIL, "kanon@gmail.com")
+                putExtra(Intent.EXTRA_EMAIL, "mrsaykatm4@gmail.com")
                 putExtra(Intent.EXTRA_SUBJECT, "New Email")
                 putExtra(Intent.EXTRA_TEXT, "Hello!")
             }
@@ -98,20 +70,12 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        // Foreground service active button
-        buttonStart.setOnClickListener {
-            Intent(applicationContext, RunningService::class.java).also {
-                it.action = RunningService.Actions.START.toString()
-                startService(it)
-            }
-        }
-
-        // Foreground service destroy button
-        buttonStop.setOnClickListener {
-            Intent(applicationContext, RunningService::class.java).also {
-                it.action = RunningService.Actions.STOP.toString()
-                startService(it)
-            }
+        btnConstrain.setOnClickListener {
+            val dataStr = GsonBuilder().create().toJson(data).toString()
+            startActivity(Intent(this@MainActivity, ActivityConstrainLayout::class.java).apply {
+                putExtra(CONS_ADDRESS, address)
+                putExtra(CONS_ADDRESS_DATA, dataStr)
+            })
         }
     }
 

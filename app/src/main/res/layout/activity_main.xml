@@ -4,17 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@color/grey_50"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context=".view.MainActivity">
-
 
 
     <TextView
         android:id="@+id/tvShow"
+        style="@style/TextBodyMedium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:padding="@dimen/_20sdp"
+        android:text="@string/this_is_linear_layout"
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,29 +24,26 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Start" />
-
-    <Button
-        android:id="@+id/btnStop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Stop" />
-
-
-    <Button
         android:id="@+id/btnNext"
         style="@style/ButtonPrimaryLayeredLarge"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:enabled="true"
-        android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_16sdp"
         android:layout_marginBottom="@dimen/_20sdp"
-        android:text="@string/go_to_next" />
+        android:enabled="true"
+        android:text="@string/send_email" />
+
+    <Button
+        android:id="@+id/btnConstrain"
+        style="@style/ButtonPrimaryLayeredLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginEnd="@dimen/_16sdp"
+        android:enabled="true"
+        android:text="@string/go_to_constrain" />
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>
